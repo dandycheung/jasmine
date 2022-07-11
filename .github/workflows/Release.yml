@@ -36,7 +36,7 @@ jobs:
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: nightly
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -111,7 +111,7 @@ jobs:
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: nightly
 
       - id: check_asset
         name: Check asset
@@ -261,6 +261,7 @@ jobs:
       - name: Build (macos)
         if: steps.check_asset.outputs.skip_build != 'true' && matrix.config.target == 'macos'
         run: |
+          rustup target install aarch64-apple-darwin
           cargo build --manifest-path native/jmbackend/platforms/macos/Cargo.toml --release --target x86_64-apple-darwin
           cargo build --manifest-path native/jmbackend/platforms/macos/Cargo.toml --release --target aarch64-apple-darwin
           lipo -create -output macos/librust.a native/jmbackend/platforms/macos/target/x86_64-apple-darwin/release/librust.a native/jmbackend/platforms/macos/target/aarch64-apple-darwin/release/librust.a
@@ -315,7 +316,7 @@ jobs:
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: nightly
 
       - name: Checkout
         uses: actions/checkout@v3
