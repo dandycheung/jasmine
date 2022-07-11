@@ -199,6 +199,7 @@ jobs:
       - name: Install rust target and build (Android-arm64)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm64')
         run: |
+          export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/22.1.7171670
           rustup target install aarch64-linux-android
           cd native/jmbackend/platforms/android
           cargo ndk -o ../../../../android/app/src/main/jniLibs -t arm64-v8a build --release
@@ -208,6 +209,7 @@ jobs:
       - name: Install rust target and build (Android-arm32)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32')
         run: |
+          export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/22.1.7171670
           rustup target install armv7-linux-androideabi
           cd native/jmbackend/platforms/android
           cargo ndk -o ../../../../android/app/src/main/jniLibs -t armeabi-v7a build --release
@@ -217,6 +219,7 @@ jobs:
       - name: Install rust target and build (Android-x86_64)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-x86_64')
         run: |
+          export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/22.1.7171670
           rustup target install x86_64-linux-android
           cd native/jmbackend/platforms/android
           cargo ndk -o ../../../../android/app/src/main/jniLibs -t x86_64 build --release
