@@ -328,4 +328,4 @@ jobs:
 
       - run: |
           cd ci
-          cargo run --bin upload-asset
+          cargo run --bin community-notify
