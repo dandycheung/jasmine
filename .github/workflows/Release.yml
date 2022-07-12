@@ -297,7 +297,7 @@ jobs:
           cargo run --bin upload-asset
 
   community_notify:
-    name: CI is green
+    name: community notify
     runs-on: ubuntu-latest
     needs:
       - build_release_assets

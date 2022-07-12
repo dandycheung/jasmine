@@ -30,6 +30,8 @@ async fn main() -> Result<()> {
         Err(_) => "".to_owned(),
     };
 
+    println!("loaded");
+
     if !tg_token.is_empty() && !tg_chat_id.is_empty() {
         match send_to_tg(tg_token, tg_chat_id, info.clone()).await {
             Ok(_) => println!("send to tg OK"),
